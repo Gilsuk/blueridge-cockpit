@@ -1,3 +1,7 @@
-import { setupCounter } from './counter.js'
+import requestPermission from './permission/index.js'
 
-setupCounter(document.querySelector('#counter'))
+try {
+  requestPermission()
+} catch (e) {
+  console.error(e)
+}
