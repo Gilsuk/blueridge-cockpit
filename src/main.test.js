@@ -1,11 +1,17 @@
-import { getAllByRole } from "@testing-library/dom";
 import "@testing-library/jest-dom/vitest";
 import { JSDOM } from "jsdom";
-import { expect, test } from "vitest";
+import { expect, test, vi } from "vitest";
 
-test('DOM test snippet', async () => {
+test('JSDOM이 자동으로 load 이벤트를 발생시키는지 확인', async () => {
     const dom = new JSDOM({})
-    const btn = dom.window.document.createElement('button')
-    dom.window.document.body.appendChild(btn)
-    expect(getAllByRole(dom.window.document.body, 'button')).toHaveLength(1)
+    const mock = vi.fn()
+
+    await new Promise((resolve) => {
+        dom.window.addEventListener('DOMContentLoaded', () => {
+            mock()
+            resolve()
+        })
+    })
+
+    expect(mock).toBeCalledTimes(1)
 })
