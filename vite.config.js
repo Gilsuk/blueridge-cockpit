@@ -13,7 +13,7 @@ export default defineConfig(({ command, mode }) => {
             }
         },
         test: {
-            environment: 'happy-dom'
+            environment: 'jsdom'
         }
     }
 })
