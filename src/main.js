@@ -1,15 +1,16 @@
+import '../styles/main.css'
 import Permission from './permission/index.js'
-import {addButton} from './render/index.js'
+import { addButton } from './render/index.js'
 
 const permission = new Permission()
 if (permission.hasBeenGranted()) {
-//   renderNotificationList()
-//   .then(readyForReceiving)
-//   .catch(renderErrorPage)
+  //   renderNotificationList()
+  //   .then(readyForReceiving)
+  //   .catch(renderErrorPage)
 } else if (permission.hasBeenDenied()) {
-//   renderErrorPage()
+  //   renderErrorPage()
 } else { // default
   addButton(document.querySelector('#message'))
-//   renderRequestButton()
-//   .then(addClickEvent())
+  //   renderRequestButton()
+  //   .then(addClickEvent())
 }
