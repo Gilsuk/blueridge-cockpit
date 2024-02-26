@@ -11,6 +11,9 @@ export default defineConfig(({ command, mode }) => {
                     entryFileNames: '[name].js',
                 }
             }
+        },
+        test: {
+            environment: 'jsdom'
         }
     }
 })
