@@ -1,6 +1,8 @@
+import Permission from "./permission"
+
 export function requestPermission() {
     Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
+        if (permission === Permission.GRANTED) {
             console.log('premission granted')
             return
         }

@@ -1,4 +1,3 @@
-// import { requestPermission } from "./request.js";
-import Permission from "./check.js";
+import Permission from "./permission.js";
 
 export default Permission
