@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom/vitest";
 import PermissionStatusEmitter from "./PermissionStatusEmitter";
 import { test, expect } from "vitest";
+import Permission from "../permission";
 
 test('permission emiiter의 초기값은 Default를 제공', async () => {
     const permEmitter = new PermissionStatusEmitter()
@@ -13,5 +14,5 @@ test('permission emiiter의 초기값은 Default를 제공', async () => {
         })
     })
 
-    expect(result).toBe(permEmitter.DEFAULT)
+    expect(result).toBe(Permission.DEFAULT)
 })

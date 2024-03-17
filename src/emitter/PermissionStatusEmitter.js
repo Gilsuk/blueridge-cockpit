@@ -1,11 +1,9 @@
+import Permission from "../permission";
+
 class PermissionStatusEmitter {
 
-    constructor() {
-        this.DEFAULT = "default"
-    }
-
     subscribe(observer) {
-        observer.next(this.DEFAULT)
+        observer.next(Permission.DEFAULT);
     }
 }
 
