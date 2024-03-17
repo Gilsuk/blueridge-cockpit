@@ -1,4 +1,7 @@
 class Message {
+
+    static #LOCAL_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone
+
     #id
     #title
     #content
@@ -29,6 +32,21 @@ class Message {
     }
     get createdAt() {
         return this.#createdAt
+    }
+
+    getCreatedDateTime(timezone) {
+        return new Intl.DateTimeFormat("ko-KR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            hourCycle: "h23",
+            minute: "2-digit",
+            second: "2-digit",
+            weekday: "short",
+
+            timeZone: timezone ? timezone : Message.#LOCAL_TIME_ZONE,
+        }).format(this.#createdAt)
     }
 
 }

@@ -13,10 +13,10 @@ test("도메인 모델 private fields 게터 확인", () => {
     expect(title).toBe("제목")
     expect(content).toBe("내용")
     expect(createdAt).toBe(Date.UTC(2024, 2, 17, 14, 43))
-    
-    // expect(new Intl.DateTimeFormat("ko-KR", {
-    //     dateStyle: "full",
-    //     timeStyle: "full",
-    //     timeZone: "Asia/Seoul",
-    // }).format(createdAt)).toBe("sdf")
+})
+
+test("메세지 시간 출력 string 포맷 검증", () => {
+    const message = new Message(1, "제목", "내용", "2024-03-17T15:43:00Z")
+
+    expect(message.getCreatedDateTime("Asia/Seoul")).toBe("2024. 03. 18. (월) 00:43:00")
 })
