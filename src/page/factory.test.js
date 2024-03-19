@@ -19,6 +19,7 @@ import { expect, test, vi } from "vitest";
 import Permission from "../permission";
 import NotificationDeniedPage from "./denied";
 import PageFactory from "./factory";
+import RequestPermissionPage from "./request";
 
 test("알림 권한이 denied일 때, denied page가 나와야함", () => {
 
@@ -29,5 +30,18 @@ test("알림 권한이 denied일 때, denied page가 나와야함", () => {
     const page = pageFactory.getPage()
 
     expect(page).toBeInstanceOf(NotificationDeniedPage)
+
+})
+
+test("알림 권한이 default일 때, request permission page가 나와야함", () => {
+
+    const permission = new Permission()
+    vi.spyOn(permission, "hasBeenDenied").mockImplementation(() => false)
+    vi.spyOn(permission, "hasBeenGranted").mockImplementation(() => false)
+
+    const pageFactory = new PageFactory(permission)
+    const page = pageFactory.getPage()
+
+    expect(page).toBeInstanceOf(RequestPermissionPage)
 
 })
