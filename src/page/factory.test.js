@@ -15,15 +15,19 @@
  * 4. 토큰 갱신실패 (broken token) -> 알림목록 페이지
  * 5. 정상 -> 알림목록 페이지
  */
-import { expect } from "vitest";
-import { test } from "vitest";
-import PageFactory from "./factory";
+import { expect, test, vi } from "vitest";
+import Permission from "../permission";
 import NotificationDeniedPage from "./denied";
+import PageFactory from "./factory";
 
 test("알림 권한이 denied일 때, denied page가 나와야함", () => {
 
-    const pageFactory = new PageFactory()
+    const permission = new Permission()
+    vi.spyOn(permission, "hasBeenDenied").mockImplementation(() => true)
+
+    const pageFactory = new PageFactory(permission)
     const page = pageFactory.getPage()
+
     expect(page).toBeInstanceOf(NotificationDeniedPage)
 
 })

@@ -13,7 +13,8 @@ export default defineConfig(({ command, mode }) => {
             }
         },
         test: {
-            environment: 'jsdom'
+            environment: 'jsdom',
+            restoreMocks: true
         }
     }
 })
