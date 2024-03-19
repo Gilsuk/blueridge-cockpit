@@ -25,6 +25,7 @@ test("알림 권한이 denied일 때, denied page가 나와야함", () => {
 
     const permission = new Permission()
     vi.spyOn(permission, "hasBeenDenied").mockImplementation(() => true)
+    vi.spyOn(permission, "hasBeenGranted").mockImplementation(() => false)
 
     const pageFactory = new PageFactory(permission)
     const page = pageFactory.getPage()
@@ -43,5 +44,19 @@ test("알림 권한이 default일 때, request permission page가 나와야함",
     const page = pageFactory.getPage()
 
     expect(page).toBeInstanceOf(RequestPermissionPage)
+
+})
+
+test("알림 권한이 granted일 때 권한관련 페이지가 나오면 안됨", () => {
+
+    const permission = new Permission()
+    vi.spyOn(permission, "hasBeenDenied").mockImplementation(() => false)
+    vi.spyOn(permission, "hasBeenGranted").mockImplementation(() => true)
+
+    const pageFactory = new PageFactory(permission)
+    const page = pageFactory.getPage()
+
+    expect(page).not.toBeInstanceOf(NotificationDeniedPage)
+    expect(page).not.toBeInstanceOf(RequestPermissionPage)
 
 })
