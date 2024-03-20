@@ -1,16 +1,6 @@
 import '../styles/main.css'
-import Permission from './permission/index.js'
-import { addButton } from './render/index.js'
+import { PageFactory } from './page'
+import Permission from './permission'
 
 const permission = new Permission()
-if (permission.hasBeenGranted()) {
-  //   renderNotificationList()
-  //   .then(readyForReceiving)
-  //   .catch(renderErrorPage)
-} else if (permission.hasBeenDenied()) {
-  //   renderErrorPage()
-} else { // default
-  addButton(document.querySelector('#message'))
-  //   renderRequestButton()
-  //   .then(addClickEvent())
-}
+new PageFactory(permission).getPage().render()
