@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 
+// eslint-disable-next-line no-unused-vars
 export default defineConfig(({ command, mode }) => {
     return {
         build: {
@@ -14,7 +15,8 @@ export default defineConfig(({ command, mode }) => {
         },
         test: {
             environment: 'jsdom',
-            restoreMocks: true
+            restoreMocks: true,
+            setupFiles: ['./vitest-setup.js']
         }
     }
 })
