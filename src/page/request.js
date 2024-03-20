@@ -1,5 +1,10 @@
 export default class RequestPermissionPage {
 
-    render() { }
+    render() {
+        const btn = window.document.createElement("button")
+        btn.textContent = "Allow Notification"
+
+        window.document.body.appendChild(btn)
+    }
 
 }
