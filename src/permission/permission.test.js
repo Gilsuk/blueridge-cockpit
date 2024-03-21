@@ -34,4 +34,14 @@ describe("Notification 브라우저 API 테스트", () => {
         expect(new Permission().hasBeenDenied()).toBeFalsy()
     })
 
+    test("권한 요청시 브라우저 API 호출하는지 여부 테스트", () => {
+        vi.stubGlobal('Notification', {
+            requestPermission: vi.fn().mockResolvedValue()
+        })
+
+        new Permission().request()
+
+        expect(Notification.requestPermission).toHaveBeenCalledOnce()
+    })
+
 })
