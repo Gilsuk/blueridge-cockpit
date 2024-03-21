@@ -24,4 +24,10 @@ export default class RequestPermissionPage {
         window.document.body.appendChild(btn)
     }
 
+    async requestAndReload() {
+        return this.#permission.request().then(() => {
+            location.reload();
+        })
+    }
+
 }

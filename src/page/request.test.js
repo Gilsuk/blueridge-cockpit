@@ -27,4 +27,19 @@ describe("알림권한 dafault시 권한을 요청할 수 있는 페이지 테�
         expect(mockPerm).toHaveBeenCalledOnce()
     })
 
+    test("requestAndReload 테스트, 권한 요청후 페이지 새로고침", async () => {
+        const permission = new Permission();
+        const mockReq = vi.spyOn(permission, "request").mockResolvedValue(Permission.DEFAULT)
+        vi.stubGlobal('location', {
+            reload: vi.fn()
+        })
+        await new RequestPermissionPage(permission).requestAndReload()
+
+        expect(mockReq).toHaveBeenCalledOnce()
+        expect(location.reload).toHaveBeenCalledOnce()
+
+        // teatdown
+        vi.unstubAllGlobals()
+    })
+
 })
