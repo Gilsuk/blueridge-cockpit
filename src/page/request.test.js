@@ -17,14 +17,15 @@ describe("알림권한 dafault시 권한을 요청할 수 있는 페이지 테�
         expect(button).toHaveTextContent(/Allow Notification/ig)
     })
 
-    test("버튼 클릭시 권한 요청을 수행해야함", () => {
+    test("버튼 클릭시 권한 요청함수를 호출해야함", () => {
         const permission = new Permission();
-        const mockPerm = vi.spyOn(permission, "request").mockResolvedValue(Permission.DEFAULT)
-        new RequestPermissionPage(permission).render()
+        const page = new RequestPermissionPage(permission)
+        const mockReq = vi.spyOn(page, "requestAndReload").mockResolvedValue()
+        page.render()
 
         screen.getByRole("button").click()
 
-        expect(mockPerm).toHaveBeenCalledOnce()
+        expect(mockReq).toHaveBeenCalledOnce()
     })
 
     test("requestAndReload 테스트, 권한 요청후 페이지 새로고침", async () => {

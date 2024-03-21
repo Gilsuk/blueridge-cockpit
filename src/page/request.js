@@ -17,9 +17,7 @@ export default class RequestPermissionPage {
         const btn = window.document.createElement("button")
         btn.textContent = "Allow Notification"
 
-        btn.addEventListener("click", () => {
-            this.#permission.request()
-        })
+        btn.addEventListener("click", this.requestAndReload)
 
         window.document.body.appendChild(btn)
     }
