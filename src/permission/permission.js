@@ -4,11 +4,14 @@ class Permission {
     static GRANTED = "granted"
     static DENIED = "denied"
 
-    hasBeenGranted () {
+    hasBeenGranted() {
         return Notification.permission === Permission.GRANTED
     }
-    hasBeenDenied () {
+    hasBeenDenied() {
         return Notification.permission === Permission.DENIED
+    }
+    async request() {
+        return Notification.requestPermission()
     }
 }
 
