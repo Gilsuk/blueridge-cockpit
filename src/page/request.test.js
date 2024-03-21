@@ -11,7 +11,7 @@ describe("알림권한 dafault시 권한을 요청할 수 있는 페이지 테�
     })
 
     test("request permission 버튼이 보여야함", () => {
-        new RequestPermissionPage().render()
+        new RequestPermissionPage(new Permission()).render()
 
         const button = screen.getByRole("button")
         expect(button).toHaveTextContent(/Allow Notification/ig)

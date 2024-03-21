@@ -2,13 +2,14 @@ import { expect, test } from "vitest";
 import DefaultPage from "./default";
 import NotificationDeniedPage from "./denied";
 import RequestPermissionPage from "./request";
+import Permission from "../permission";
 
 test("all pages should implement render", () => {
 
     const pages = [
         new DefaultPage(),
         new NotificationDeniedPage(),
-        new RequestPermissionPage(),
+        new RequestPermissionPage(new Permission()),
     ]
 
     pages.forEach(page => {

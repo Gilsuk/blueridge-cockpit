@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import Permission from "../permission"
 
 export default class RequestPermissionPage {
@@ -10,6 +9,7 @@ export default class RequestPermissionPage {
      * @param {Permission} permission 
      */
     constructor(permission) {
+        if (!(permission instanceof Permission)) throw new Error("Argument is missing")
         this.#permission = permission
     }
 

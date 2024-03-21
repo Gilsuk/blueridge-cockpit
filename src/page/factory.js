@@ -22,6 +22,6 @@ export default class PageFactory {
         else if (this.#permission.hasBeenGranted())
             return new DefaultPage()
         else
-            return new RequestPermissionPage()
+            return new RequestPermissionPage(this.#permission)
     }
 }
