@@ -28,6 +28,21 @@ describe("알림권한 dafault시 권한을 요청할 수 있는 페이지 테�
         expect(mockReq).toHaveBeenCalledOnce()
     })
 
+    test("권한 요청은 Permission 객체에 위임", () => {
+        const permission = new Permission();
+        const mockPermReq = vi.spyOn(permission, "request").mockResolvedValue()
+        const page = new RequestPermissionPage(permission)
+        vi.stubGlobal('location', {
+            reload: vi.fn()
+        })
+
+        page.render()
+
+        screen.getByRole("button").click()
+
+        expect(mockPermReq).toHaveBeenCalledOnce()
+    })
+
     test("requestAndReload 테스트, 권한 요청후 페이지 새로고침", async () => {
         const permission = new Permission();
         const mockReq = vi.spyOn(permission, "request").mockResolvedValue(Permission.DEFAULT)
