@@ -17,6 +17,10 @@ describe("알림권한 dafault시 권한을 요청할 수 있는 페이지 테�
         document.body.innerHTML = ""
     })
 
+    test("페이지 생성자에 permission객체 없으면 에러", () => {
+        expect(() => new RequestPermissionPage()).toThrowError()
+    })
+
     test("request permission 버튼이 보여야함", () => {
         new RequestPermissionPage(new Permission()).render()
 
