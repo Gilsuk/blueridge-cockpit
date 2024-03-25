@@ -25,5 +25,5 @@ dist-ssr
 
 ### ends of default templat ###
 
-*.svg
+public/images/*
 coverage
