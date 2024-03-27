@@ -28,8 +28,8 @@ test("알림 권한이 denied일 때, denied page가 나와야함", () => {
     const permission = new Permission()
     const router = new Router();
     vi.spyOn(router, "isAtTokens").mockReturnValue(false)
-    vi.spyOn(permission, "hasBeenDenied").mockImplementation(() => true)
-    vi.spyOn(permission, "hasBeenGranted").mockImplementation(() => false)
+    vi.spyOn(permission, "hasBeenDenied").mockReturnValue(true)
+    vi.spyOn(permission, "hasBeenGranted").mockReturnValue(false)
 
     const pageFactory = new PageFactory(permission, router)
     const page = pageFactory.getPage()
@@ -43,8 +43,8 @@ test("알림 권한이 default일 때, request permission page가 나와야함",
     const permission = new Permission()
     const router = new Router();
     vi.spyOn(router, "isAtTokens").mockReturnValue(false)
-    vi.spyOn(permission, "hasBeenDenied").mockImplementation(() => false)
-    vi.spyOn(permission, "hasBeenGranted").mockImplementation(() => false)
+    vi.spyOn(permission, "hasBeenDenied").mockReturnValue(false)
+    vi.spyOn(permission, "hasBeenGranted").mockReturnValue(false)
 
     const pageFactory = new PageFactory(permission, router)
     const page = pageFactory.getPage()
@@ -58,8 +58,8 @@ test("알림 권한이 granted일 때 권한관련 페이지가 나오면 안됨
     const permission = new Permission()
     const router = new Router();
     vi.spyOn(router, "isAtTokens").mockReturnValue(false)
-    vi.spyOn(permission, "hasBeenDenied").mockImplementation(() => false)
-    vi.spyOn(permission, "hasBeenGranted").mockImplementation(() => true)
+    vi.spyOn(permission, "hasBeenDenied").mockReturnValue(false)
+    vi.spyOn(permission, "hasBeenGranted").mockReturnValue(true)
 
     const pageFactory = new PageFactory(permission, router)
     const page = pageFactory.getPage()
