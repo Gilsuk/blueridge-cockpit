@@ -3,6 +3,7 @@ import DefaultPage from "./default";
 import NotificationDeniedPage from "./denied";
 import RequestPermissionPage from "./request";
 import Permission from "../permission";
+import TokensPage from "./TokensPage";
 
 test("all pages should implement render", () => {
 
@@ -10,6 +11,7 @@ test("all pages should implement render", () => {
         new DefaultPage(),
         new NotificationDeniedPage(),
         new RequestPermissionPage(new Permission()),
+        new TokensPage(),
     ]
 
     pages.forEach(page => {
