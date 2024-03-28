@@ -1,5 +1,5 @@
 export default class Router {
     isAtTokens() {
-        return true
+        return location.pathname === "/tokens"
     }
 }
