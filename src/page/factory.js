@@ -2,7 +2,7 @@
 import Permission from "../permission";
 // eslint-disable-next-line no-unused-vars
 import Router from "../router";
-import TokensPage from "./TokensPage";
+import TokensPage from "./tokens";
 import DefaultPage from "./default";
 import NotificationDeniedPage from "./denied";
 import RequestPermissionPage from "./request";

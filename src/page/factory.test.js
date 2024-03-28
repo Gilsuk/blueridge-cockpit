@@ -21,7 +21,7 @@ import NotificationDeniedPage from "./denied";
 import PageFactory from "./factory";
 import RequestPermissionPage from "./request";
 import Router from "../router";
-import TokensPage from "./TokensPage";
+import TokensPage from "./tokens";
 
 test("알림 권한이 denied일 때, denied page가 나와야함", () => {
 

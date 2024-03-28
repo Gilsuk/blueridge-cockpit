@@ -3,7 +3,7 @@ import DefaultPage from "./default";
 import NotificationDeniedPage from "./denied";
 import RequestPermissionPage from "./request";
 import Permission from "../permission";
-import TokensPage from "./TokensPage";
+import TokensPage from "./tokens";
 
 test("all pages should implement render", () => {
 
