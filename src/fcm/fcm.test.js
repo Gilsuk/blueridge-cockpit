@@ -1,13 +1,36 @@
-import { expect, test } from "vitest";
+import { initializeApp } from "firebase/app"
+import { getMessaging, getToken } from "firebase/messaging"
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import FCM from "./fcm";
 
 /**
  * 테스트환경에서 FCM API 실행이 불가능함
  */
-test.skip("getToken이 token을 담은 promise를 반환해야함", async () => {
-    const fcm = new FCM();
+describe("firebase SDK wrapper test", () => {
+    vi.mock("firebase/app")
+    vi.mock("firebase/messaging")
 
-    const token = await fcm.getToken()
+    beforeEach(() => {
+        vi.stubGlobal('navigator', {
+            serviceWorker: {
+                getRegistration: vi.fn().mockResolvedValue()
+            }
+        })
+        initializeApp.mockReturnValue(new Object())
+        getMessaging.mockReturnValue(new Object())
+        getToken.mockResolvedValue("MOCKED_TOKEN")
+    })
 
-    expect(token).toBeTruthy()
+    afterEach(() => {
+        vi.unstubAllGlobals()
+    })
+
+    test("getToken이 token을 담은 promise를 반환해야함", async () => {
+        const fcm = new FCM();
+
+        const token = await fcm.getToken()
+
+        expect(token).toBeTruthy()
+    })
+
 })
