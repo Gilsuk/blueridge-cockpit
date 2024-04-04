@@ -11,5 +11,14 @@ self.addEventListener("fetch", (event) => {
 })
 
 self.addEventListener("push", (event) => {
-    console.log("sw push event: ", event)
+    const data = event.data.json()
+    const notification = data.notification
+
+    const title = notification.title
+    const options = {
+        body: notification.body,
+        icon: notification.image
+    }
+
+    self.registration.showNotification(title, options)
 })
