@@ -1,6 +1,6 @@
-import sw from '../service-worker?worker&url'
 import { initializeApp } from "firebase/app"
 import { getMessaging, getToken } from "firebase/messaging"
+import sw from '../service-worker?worker&url'
 
 
 export default class FCM {
