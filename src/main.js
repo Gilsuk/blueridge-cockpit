@@ -6,7 +6,7 @@ import Router from './router'
 
 navigator.serviceWorker.register(sw, {
     type: import.meta.env.PROD ? 'classic' : 'module'
-}).then((registration) => {
+}).then(() => {
     const permission = new Permission()
     const router = new Router();
     new PageFactory(permission, router).getPage().render()
