@@ -9,3 +9,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
     console.log("sw fetch event: ", event)
 })
+
+self.addEventListener("push", (event) => {
+    console.log("sw push event: ", event)
+})
