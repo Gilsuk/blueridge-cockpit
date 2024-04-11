@@ -5,7 +5,7 @@ export default defineConfig(({ command, mode }) => {
     return {
         test: {
             environment: 'jsdom',
-            restoreMocks: true,
+            // restoreMocks: true,
             setupFiles: ['./vitest-setup.js']
         }
     }

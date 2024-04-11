@@ -14,7 +14,7 @@ class Message {
      * @param {string} content 
      * @param {string} createdDateTime ISO 8601
      */
-    constructor(id, title, content, createdDateTime) {
+    constructor(id: number, title: string, content: string, createdDateTime: string) {
         this.#id = id
         this.#title = title
         this.#content = content
@@ -34,7 +34,7 @@ class Message {
         return this.#createdAt
     }
 
-    getCreatedDateTime(timezone) {
+    getCreatedDateTime(timezone: string) {
         return new Intl.DateTimeFormat("ko-KR", {
             year: "numeric",
             month: "2-digit",

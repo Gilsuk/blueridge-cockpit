@@ -4,12 +4,7 @@ export default class RequestPermissionPage {
 
     #permission
 
-    /**
-     * 
-     * @param {Permission} permission 
-     */
-    constructor(permission) {
-        if (!(permission instanceof Permission)) throw new Error("Argument is missing")
+    constructor(permission: Permission) {
         this.#permission = permission
     }
 

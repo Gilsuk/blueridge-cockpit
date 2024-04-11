@@ -1,15 +1,10 @@
-// eslint-disable-next-line no-unused-vars
 import FCM from "../fcm"
 
 export default class TokensPage {
 
     #fcm
 
-    /**
-     * 
-     * @param {FCM} fcm 
-     */
-    constructor(fcm) {
+    constructor(fcm: FCM) {
         this.#fcm = fcm
     }
 

@@ -1,13 +1,13 @@
-import { initializeApp } from "firebase/app"
-import { getMessaging, getToken } from "firebase/messaging"
+import { FirebaseApp, initializeApp } from "firebase/app"
+import { Messaging, getMessaging, getToken } from "firebase/messaging"
 import sw from '../service-worker?worker&url'
 
 
 export default class FCM {
-    #app
-    #messaging
+    #app!: FirebaseApp
+    #messaging!: Messaging
 
-    static #instance;
+    static #instance: FCM
 
     constructor() {
         if (FCM.#instance !== undefined) return this

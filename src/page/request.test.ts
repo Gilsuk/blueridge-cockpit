@@ -17,10 +17,6 @@ describe("알림권한 dafault시 권한을 요청할 수 있는 페이지 테�
         document.body.innerHTML = ""
     })
 
-    test("페이지 생성자에 permission객체 없으면 에러", () => {
-        expect(() => new RequestPermissionPage()).toThrowError()
-    })
-
     test("request permission 버튼이 보여야함", () => {
         new RequestPermissionPage(new Permission()).render()
 
@@ -40,7 +36,7 @@ describe("알림권한 dafault시 권한을 요청할 수 있는 페이지 테�
 
     test("권한 요청은 Permission 객체에 위임", () => {
         const permission = new Permission();
-        const mockPermReq = vi.spyOn(permission, "request").mockResolvedValue()
+        const mockPermReq = vi.spyOn(permission, "request").mockResolvedValue("default")
         const page = new RequestPermissionPage(permission)
         page.render()
 
@@ -51,7 +47,7 @@ describe("알림권한 dafault시 권한을 요청할 수 있는 페이지 테�
 
     test("requestAndReload 테스트, 권한 요청후 페이지 새로고침", async () => {
         const permission = new Permission();
-        const mockReq = vi.spyOn(permission, "request").mockResolvedValue(Permission.DEFAULT)
+        const mockReq = vi.spyOn(permission, "request").mockResolvedValue("default")
         vi.stubGlobal('location', {
             reload: vi.fn()
         })

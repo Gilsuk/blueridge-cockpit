@@ -1,7 +1,5 @@
 import FCM from "../fcm";
-// eslint-disable-next-line no-unused-vars
 import Permission from "../permission";
-// eslint-disable-next-line no-unused-vars
 import Router from "../router";
 import DefaultPage from "./default";
 import NotificationDeniedPage from "./denied";
@@ -13,12 +11,7 @@ export default class PageFactory {
     #permission
     #router
 
-    /**
-     * 
-     * @param {Permission} permission 
-     * @param {Router} router 
-     */
-    constructor(permission, router) {
+    constructor(permission: Permission, router: Router) {
         this.#permission = permission
         this.#router = router
     }
