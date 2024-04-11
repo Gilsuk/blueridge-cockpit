@@ -1,5 +1,4 @@
-import { initializeApp } from "firebase/app"
-import { getMessaging, getToken } from "firebase/messaging"
+import { getToken } from "firebase/messaging";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import FCM from "./fcm";
 
@@ -10,15 +9,12 @@ describe("firebase SDK wrapper test", () => {
     vi.mock("firebase/app")
     vi.mock("firebase/messaging")
 
-    beforeEach(() => {
+    beforeEach(async () => {
         vi.stubGlobal('navigator', {
             serviceWorker: {
-                getRegistration: vi.fn().mockResolvedValue()
+                getRegistration: vi.fn().mockResolvedValue({})
             }
         })
-        initializeApp.mockReturnValue(new Object())
-        getMessaging.mockReturnValue(new Object())
-        getToken.mockResolvedValue("MOCKED_TOKEN")
     })
 
     afterEach(() => {
@@ -26,6 +22,7 @@ describe("firebase SDK wrapper test", () => {
     })
 
     test("getToken이 token을 담은 promise를 반환해야함", async () => {
+        vi.mocked(getToken).mockResolvedValue("MOCKED_TOKEN")
         const fcm = new FCM();
 
         const token = await fcm.getToken()
