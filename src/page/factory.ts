@@ -3,6 +3,7 @@ import Permission from "../permission";
 import Router from "../router";
 import DefaultPage from "./default";
 import NotificationDeniedPage from "./denied";
+import Page from "./page";
 import RequestPermissionPage from "./request";
 import TokensPage from "./tokens";
 
@@ -16,7 +17,7 @@ export default class PageFactory {
         this.#router = router
     }
 
-    getPage() {
+    getPage(): Page {
         if (this.#router.isAtTokens())
             return new TokensPage(new FCM())
 
