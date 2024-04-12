@@ -5,6 +5,7 @@ import TokensPage from "./tokens";
 
 
 describe("Tokens Page 테스트", () => {
+    vi.mock("../fcm")
 
     afterEach(() => {
         document.body.innerHTML = ""
@@ -12,9 +13,8 @@ describe("Tokens Page 테스트", () => {
 
     test("FCM 토큰정보 화면에 표시", async () => {
         const MOCKED_TOKEN = "MockedTokenValue"
-        const fcm = new FCM()
-        vi.spyOn(fcm, "getToken").mockResolvedValue(MOCKED_TOKEN)
-        const page = new TokensPage(fcm)
+        vi.mocked(FCM.getToken).mockResolvedValue(MOCKED_TOKEN)
+        const page = new TokensPage(FCM)
 
         await page.render()
 

@@ -3,20 +3,11 @@ import { Messaging, getMessaging, getToken } from "firebase/messaging"
 import sw from '../service-worker?worker&url'
 
 
-export default class FCM {
+class FCM {
     #app!: FirebaseApp
     #messaging!: Messaging
 
-    static #instance: FCM
-
-    constructor() {
-        if (FCM.#instance !== undefined) return this
-        FCM.#instance = this
-        return this
-    }
-
     #getFirebaseApp() {
-        if (this.#app !== undefined) return this.#app
         this.#app = initializeApp({
             apiKey: import.meta.env.VITE_FIREBASE_apiKey,
             authDomain: import.meta.env.VITE_FIREBASE_authDomain,
@@ -43,3 +34,8 @@ export default class FCM {
         })
     }
 }
+
+const instance = new FCM()
+Object.freeze(instance)
+
+export default instance

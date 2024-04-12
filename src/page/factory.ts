@@ -18,7 +18,7 @@ export default class PageFactory {
 
     getPage() {
         if (this.#router.isAtTokens())
-            return new TokensPage(new FCM())
+            return new TokensPage(FCM)
 
         if (this.#permission.hasBeenDenied())
             return new NotificationDeniedPage()
