@@ -1,6 +1,8 @@
 env:
   browser: true
   es2021: true
+  worker: true
+  serviceworker: true
 extends: 
   - eslint:recommended
   - plugin:jest-dom/recommended
