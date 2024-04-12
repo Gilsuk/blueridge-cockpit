@@ -1,11 +1,11 @@
 class Message {
 
-    static #LOCAL_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone
+    private static LOCAL_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone
 
-    #id
-    #title
-    #content
-    #createdAt
+    readonly id
+    readonly title
+    readonly content
+    readonly createdAt
 
     /**
      * 
@@ -15,23 +15,10 @@ class Message {
      * @param {string} createdDateTime ISO 8601
      */
     constructor(id: number, title: string, content: string, createdDateTime: string) {
-        this.#id = id
-        this.#title = title
-        this.#content = content
-        this.#createdAt = Date.parse(createdDateTime)
-    }
-
-    get id() {
-        return this.#id
-    }
-    get title() {
-        return this.#title
-    }
-    get content() {
-        return this.#content
-    }
-    get createdAt() {
-        return this.#createdAt
+        this.id = id
+        this.title = title
+        this.content = content
+        this.createdAt = Date.parse(createdDateTime)
     }
 
     getCreatedDateTime(timezone: string) {
@@ -45,8 +32,8 @@ class Message {
             second: "2-digit",
             weekday: "short",
 
-            timeZone: timezone ? timezone : Message.#LOCAL_TIME_ZONE,
-        }).format(this.#createdAt)
+            timeZone: timezone ? timezone : Message.LOCAL_TIME_ZONE,
+        }).format(this.createdAt)
     }
 
 }

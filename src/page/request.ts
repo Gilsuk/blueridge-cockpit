@@ -2,10 +2,10 @@ import Permission from "../permission"
 
 export default class RequestPermissionPage {
 
-    #permission
+    private readonly permission
 
     constructor(permission: Permission) {
-        this.#permission = permission
+        this.permission = permission
     }
 
     render() {
@@ -18,7 +18,7 @@ export default class RequestPermissionPage {
     }
 
     async requestAndReload() {
-        return this.#permission.request().then(() => {
+        return this.permission.request().then(() => {
             location.reload();
         })
     }

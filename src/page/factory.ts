@@ -8,23 +8,23 @@ import TokensPage from "./tokens";
 
 export default class PageFactory {
 
-    #permission
-    #router
+    private readonly permission
+    private readonly router
 
     constructor(permission: Permission, router: Router) {
-        this.#permission = permission
-        this.#router = router
+        this.permission = permission
+        this.router = router
     }
 
     getPage() {
-        if (this.#router.isAtTokens())
+        if (this.router.isAtTokens())
             return new TokensPage(FCM)
 
-        if (this.#permission.hasBeenDenied())
+        if (this.permission.hasBeenDenied())
             return new NotificationDeniedPage()
-        else if (this.#permission.hasBeenGranted())
+        else if (this.permission.hasBeenGranted())
             return new DefaultPage()
         else
-            return new RequestPermissionPage(this.#permission)
+            return new RequestPermissionPage(this.permission)
     }
 }
