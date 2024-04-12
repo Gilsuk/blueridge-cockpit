@@ -1,6 +1,7 @@
 import Permission from "../permission"
+import Page from "./page"
 
-export default class RequestPermissionPage {
+export default class RequestPermissionPage implements Page {
 
     private readonly permission
 

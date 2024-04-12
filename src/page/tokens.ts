@@ -1,6 +1,7 @@
 import FCM from "../fcm"
+import Page from "./page"
 
-export default class TokensPage {
+export default class TokensPage implements Page {
 
     private readonly fcm
 
