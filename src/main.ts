@@ -1,11 +1,12 @@
 import '../styles/main.css'
-import sw from './service-worker?worker&url'
+import { url } from './service-worker'
 import { PageFactory } from './page'
 import Permission from './permission'
 import Router from './router'
 
-navigator.serviceWorker.register(sw, {
-    type: import.meta.env.PROD ? 'classic' : 'module'
+navigator.serviceWorker.register(url, {
+    type: import.meta.env.PROD ? 'classic' : 'module',
+    scope: '/',
 }).then(() => {
     const permission = new Permission()
     const router = new Router();
