@@ -1,6 +1,6 @@
 import { FirebaseApp, initializeApp } from "firebase/app"
 import { Messaging, getMessaging, getToken } from "firebase/messaging"
-import { url } from '../service-worker'
+import { SERVICE_WORKER_URL } from '../service-worker'
 
 class FCM {
     private app!: FirebaseApp
@@ -25,7 +25,7 @@ class FCM {
     }
 
     getToken() {
-        return navigator.serviceWorker.getRegistration(url).then((registration) => {
+        return navigator.serviceWorker.getRegistration(SERVICE_WORKER_URL).then((registration) => {
             return getToken(this.getMessaging(), {
                 vapidKey: import.meta.env.VITE_FIREBASE_vapidKey,
                 serviceWorkerRegistration: registration,

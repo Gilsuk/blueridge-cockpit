@@ -1,7 +1,5 @@
-import url from '../../service-worker?worker&url'
-import main from './main'
+import SERVICE_WORKER_URL from '../../service-worker?worker&url'
 
 export {
-    url,
-    main
+    SERVICE_WORKER_URL,
 }

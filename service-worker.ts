@@ -1,3 +1,1 @@
-import { main } from './src/service-worker'
-
-main()
+import './src/service-worker/main'

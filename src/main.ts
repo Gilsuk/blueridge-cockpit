@@ -1,10 +1,10 @@
 import '../styles/main.css'
-import { url } from './service-worker'
+import { SERVICE_WORKER_URL } from './service-worker'
 import { PageFactory } from './page'
 import Permission from './permission'
 import Router from './router'
 
-navigator.serviceWorker.register(url, {
+navigator.serviceWorker.register(SERVICE_WORKER_URL, {
     type: import.meta.env.PROD ? 'classic' : 'module',
     scope: '/',
 }).then(() => {
